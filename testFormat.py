@@ -3,7 +3,7 @@ import sys
 
 
 global sleep, file_name, options
-sleep = 600
+sleep = 60
 file_name = "results.csv"
 options = "a"
 
@@ -14,7 +14,7 @@ def incorrect_usage(argv, required_number):
                 len(argv) - 1) + " but requires " + str(required_arg)
 
     print "Example usage:"
-    print "./MonitorAll.py -s=600 -f=results.csv -o"
+    print "./MonitorAll.py -s=60 -f=results.csv -o"
     print "     -s Sleep time in seconds between readings"
     print "     -f File to write results to"
     print "     -o or -a Overwrite or Append to the results file if it already exists (Must provide just one)"

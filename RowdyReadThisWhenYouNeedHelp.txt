@@ -1,0 +1,12 @@
+﻿Hi Rowdy,
+if you get stuck, these are the steps that you go through to run the app:
+
+1. from this directory (ie the one you're reading this in)
+2. type sudo python MonitorAll.py -s=600 -f=results.csv -o
+
+This will kick if off monitoring every 10 minutes (ie 600 seconds) and it will write to the results.csv file. If you want to change either of these options all you need to do is put the values you'd like in the command above when you run it. For example you could use:
+
+sudo python MonitorAll.py -s=10 -f=rowdyfile.csv -o
+
+if you wanted to record every 10 seconds into a file called rowdyfile.csv
+

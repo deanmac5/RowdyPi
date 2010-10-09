@@ -22,6 +22,12 @@ def printReadings(full_file_paths):
     for dir in full_file_paths:
 
         file = dir + "/w1_slave"
+	if not os.path.exists(file):
+		print "Directory " + file + " doesn't exist"
+		continue
+	
+
+
         f = open(file, 'r')
 	id = getId(dir)
         ts = time.time()
@@ -35,7 +41,7 @@ def printReadings(full_file_paths):
         f.close()
         values = [st,id,str(temp)]
 	allList.append(values)
-        #writeTemp(values)
+        #writeTemp(values)+
 	#print values
     return allList
 

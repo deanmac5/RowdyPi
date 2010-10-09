@@ -38,7 +38,7 @@ def incorrect_usage(argv, required_number):
                 len(argv) - 1) + " but requires " + str(required_arg)
 
     print "Example usage:"
-    print "./MonitorAll.py -s=600 -f=results.csv -o"
+    print "./MonitorAll.py -s=600-f=results.csv -o"
     print "     -s Sleep time in seconds between readings"
     print "     -f File to write results to"
     print "     -o or -a Overwrite or Append to the results file if it already exists (Must provide just one)"
@@ -113,7 +113,7 @@ print "Writing (" + string_options + ") to file [" + file_name + "] with reading
 
 while (True):
 
-    bothVals = HumidityAndTemp.getHumAndTemp()
+    #bothVals = HumidityAndTemp.getHumAndTemp()
     justTempVals = TempOneWire.getReadings()
     allValues = bothVals + justTempVals
 
@@ -150,7 +150,7 @@ while (True):
     if not os.path.isfile(file_name) or (options == "w"):
         line += "Date"
         for res in allValues:
-            line += "," + res[id_key]
+            line += "," + res[id_key] 
             if len(res) == 5:
                 line += ","
                 both_count += 1
