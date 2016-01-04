@@ -28,12 +28,14 @@ def printReadings(full_file_paths):
 
 
         reading =  f.read()
-        print input
+        
         temp = getTemp(reading)
 
         f.close()
         values = [st,dir,temp]
         writeTemp(values)
+	print values
+    addSpacing()
 
 def getTemp(text):
     temp = "t="
@@ -43,13 +45,19 @@ def getTemp(text):
 
 def writeTemp(values):
 
-    file = open("test.txt",'a')
+    file = open("2016.txt",'a')
 
     s = str(values)
     file.write(s)
-
     file.write("\n")
+    
     file.close()
+
+def addSpacing():
+	file = open("test.txt",'a')
+	file.write("\n\n\n\n\n\n")
+	print ("\n\n\n\n\n\n")
+	file.close()
 
 
 
@@ -63,19 +71,25 @@ def writeTemp(values):
 
 
 
-# full_file_paths = get_filepaths("/sys/bus/w1/devices")
-# full_file_paths.pop(0) #this gets rid of the non sensor directory
+
 
 #
 #
-text = """cf 01 4b 46 7f ff 01 10 5d : crc=5d YES
-cf 01 4b 46 7f ff 01 10 5d t=28937"""
-
-print getTemp(text)
+# text = """cf 01 4b 46 7f ff 01 10 5d : crc=5d YES
+# cf 01 4b 46 7f ff 01 10 5d t=28937"""
 
 
 
 
-# while(True):
-#     printReadings(full_file_paths)
-#     time.sleep(5)
+while(True):
+	full_file_paths = get_filepaths("/sys/bus/w1/devices")
+	full_file_paths.pop(0) #this gets rid of the non sensor directory
+    	printReadings(full_file_paths)
+    	time.sleep(600)
+
+
+
+
+
+
+
