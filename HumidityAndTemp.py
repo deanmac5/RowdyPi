@@ -1,6 +1,6 @@
 
 import Adafruit_DHT
-import time
+import time, datetime
 
 
 
@@ -13,8 +13,8 @@ def printOutput(room, hum,temp, pin):
     if hum is not None and temp is not None:
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
-	    th = '{0:0.1f} , {1:0.1f}%'.format(temp, hum)
-        print st + room + pin + th
+	th = '{0:0.1f} , {1:0.1f}%'.format(temp, hum)
+        print st + room + str(pin) + th
     else:
         print 'Failed to get reading. Boo hiss'
 
