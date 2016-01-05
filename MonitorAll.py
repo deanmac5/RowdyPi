@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
 
-import Hum2
+import HumidityAndTemp
+import TempOneWire
 
 while(True):
-    Hum2.getHumAndTemp()
+    HumidityAndTemp.getHumAndTemp()
+    TempOneWire.getReadings()
