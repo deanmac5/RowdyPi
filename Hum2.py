@@ -3,9 +3,7 @@
 
 import Adafruit_DHT
 
-sensor = Adafruit_DHT.DHT22
 
-pins = {'Kitchen': 22, 'Lounge': 24, 'Supply Air': 23, 'Outside Air': 10, 'Exhaust Air': 18, 'Master Bedroom': 17}
 
 
 def readDHT(pin):
@@ -19,7 +17,9 @@ def printOutput(hum,temp):
     else:
         print 'Failed to get reading. Boo hiss'
 
-#For testing
-for room,pin in pins.items():
-    print 'Room %s is pin %s' % (room,pin)
-    readDHT(pin)
+def getHumAndTemp():
+    sensor = Adafruit_DHT.DHT22
+    pins = {'Kitchen': 22, 'Lounge': 24, 'Supply Air': 23, 'Outside Air': 10, 'Exhaust Air': 18, 'Master Bedroom': 17}
+    for room,pin in pins.items():
+        print 'Room %s is pin %s' % (room,pin)
+        readDHT(pin)
