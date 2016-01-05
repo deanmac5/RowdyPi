@@ -15,13 +15,16 @@ def printOutput(room, hum,temp, pin):
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
         th = '{0:0.1f} , {1:0.1f}%'.format(temp, hum)
         values = [st, room, str(pin), th]
-	print values
-	
+	return values
+
     else:
         print 'Failed to get reading. Boo hiss'
 
 def getHumAndTemp():
     sensor = Adafruit_DHT.DHT22
     pins = {'Kitchen': 22, 'Lounge': 24, 'Supply Air': 23, 'Outside Air': 10, 'Exhaust Air': 18, 'Master Bedroom': 17}
+    valList = []
     for room,pin in pins.items():
-        readDHT(room, sensor, pin)
+        valList.append(readDHT(room, sensor, pin))
+
+    return valList
