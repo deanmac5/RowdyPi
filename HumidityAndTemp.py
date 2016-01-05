@@ -4,14 +4,15 @@ import Adafruit_DHT
 
 
 
-def readDHT(sensor,pin):
+def readDHT(room,sensor,pin):
     hum, temp = Adafruit_DHT.read_retry(sensor, pin)
-    printOutput(hum,temp)
+    printOutput(room, hum,temp)
 
 
 def printOutput(room, hum,temp):
     if hum is not None and temp is not None:
-        print 'Room: %s -> Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(room,temp, hum)
+	print 'Sensor: %s' % room
+        print 'Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temp, hum)
     else:
         print 'Failed to get reading. Boo hiss'
 

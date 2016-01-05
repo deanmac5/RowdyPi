@@ -61,9 +61,9 @@ def addSpacing():
 
 
 def getReadings():
-    full_file_paths = get_filepaths("/sys/bus/w1/devices")
+	full_file_paths = get_filepaths("/sys/bus/w1/devices")
 	full_file_paths.pop(0) #this gets rid of the non sensor directory
-    printReadings(full_file_paths)
+	printReadings(full_file_paths)
 
 
 #
