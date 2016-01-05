@@ -6,7 +6,7 @@ import Adafruit_DHT
 
 
 
-def readDHT(pin):
+def readDHT(sensor,pin):
     hum, temp = Adafruit_DHT.read_retry(sensor, pin)
     printOutput(hum,temp)
 
@@ -22,4 +22,4 @@ def getHumAndTemp():
     pins = {'Kitchen': 22, 'Lounge': 24, 'Supply Air': 23, 'Outside Air': 10, 'Exhaust Air': 18, 'Master Bedroom': 17}
     for room,pin in pins.items():
         print 'Room %s is pin %s' % (room,pin)
-        readDHT(pin)
+        readDHT(sensor, pin)
