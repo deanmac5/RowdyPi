@@ -29,9 +29,10 @@ def addSpacing():
 #########################
 
 while(True):
+    
     bothVals = HumidityAndTemp.getHumAndTemp()
     justTempVals = TempOneWire.getReadings()
-    allValues = bothVals.append(justTempVals)
-    print allValues
+    allValues = bothVals + justTempVals
+    print allValues    
     writeTemp(allValues)
     #time.sleep(600)
