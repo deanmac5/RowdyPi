@@ -23,7 +23,7 @@ def printReadings(full_file_paths):
 
         file = dir + "/w1_slave"
         f = open(file, 'r')
-	
+	    id = getId(dir)
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
 
@@ -38,6 +38,11 @@ def printReadings(full_file_paths):
         #writeTemp(values)
 	#print values
     return allList
+
+def getId(dir):
+    result = dir.split('devices/')
+    return result[1]
+
 
 def getTemp(text):
     temp = "t="
