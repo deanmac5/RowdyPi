@@ -23,7 +23,7 @@ def printReadings(full_file_paths):
 
         file = dir + "/w1_slave"
         f = open(file, 'r')
-	    id = getId(dir)
+	id = getId(dir)
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
 

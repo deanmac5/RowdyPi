@@ -9,7 +9,7 @@ import HumidityAndTemp,TempOneWire, time
 
 def writeTemp(values):
 
-    file = open("All.txt",'a')
+    file = open("All.csv",'a')
 
     s = str(values)
     file.write(s)
@@ -18,7 +18,7 @@ def writeTemp(values):
     file.close()
 
 def addSpacing():
-	file = open("All.txt",'a')
+	file = open("All.csv",'a')
 	file.write("\n")
 	print ("\n")
 	file.close()
@@ -33,13 +33,13 @@ while(True):
     bothVals = HumidityAndTemp.getHumAndTemp()
     justTempVals = TempOneWire.getReadings()
     allValues = bothVals + justTempVals
-    print allValues
+    
 
     for res in allValues:
         cleanResult =  ','.join(res)
         print cleanResult
         writeTemp(cleanResult)
-        addSpacing()
+        
 
     # writeTemp(allValues)
     # addSpacing()
