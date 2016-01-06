@@ -23,7 +23,7 @@ def printReadings(full_file_paths):
 
         file = dir + "/w1_slave"
         f = open(file, 'r')
-	id = getId(dir)
+	    id = getId(dir)
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
 
@@ -33,7 +33,7 @@ def printReadings(full_file_paths):
         temp = getTemp(reading)
 
         f.close()
-        values = [st,id,temp]
+        values = [st,id,str(temp)]
 	allList.append(values)
         #writeTemp(values)
 	#print values
@@ -50,21 +50,7 @@ def getTemp(text):
     tempc = float(text[index:])/1000.0
     return tempc
 
-def writeTemp(values):
 
-    file = open("2016.txt",'a')
-
-    s = str(values)
-    file.write(s)
-    file.write("\n")
-
-    file.close()
-
-def addSpacing():
-	file = open("test.txt",'a')
-	file.write("\n\n\n\n\n\n")
-	print ("\n\n\n\n\n\n")
-	file.close()
 
 
 def getReadings():

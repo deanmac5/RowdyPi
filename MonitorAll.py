@@ -18,9 +18,9 @@ def writeTemp(values):
     file.close()
 
 def addSpacing():
-	file = open("test.txt",'a')
-	file.write("\n\n\n\n\n\n")
-	print ("\n\n\n\n\n\n")
+	file = open("All.txt",'a')
+	file.write("\n")
+	print ("\n")
 	file.close()
 
 
@@ -34,6 +34,13 @@ while(True):
     justTempVals = TempOneWire.getReadings()
     allValues = bothVals + justTempVals
     print allValues
-    writeTemp(allValues)
-    addSpacing()
-    time.sleep(600)
+
+    for res in allValues:
+        cleanResult =  ','.join(res)
+        print cleanResult
+        writeTemp(cleanResult)
+        addSpacing()
+
+    # writeTemp(allValues)
+    # addSpacing()
+    # time.sleep(600)
