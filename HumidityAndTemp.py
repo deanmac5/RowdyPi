@@ -13,8 +13,9 @@ def printOutput(room, hum,temp, pin):
     if hum is not None and temp is not None:
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
-        ftem = '{0:0.1f}%'.format(temp)
-        fhum = '{1:0.1f}%'.format(hum)
+        #ftem = '0.1f%'.format(temp)
+	ftem = '%2.1f'% temp
+        fhum = '%2.1f'% hum
         values = [st, room, str(pin), ftem,fhum]
 	return values
 
