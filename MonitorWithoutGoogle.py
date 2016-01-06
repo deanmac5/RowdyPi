@@ -56,7 +56,6 @@ def writeTemp(values):
 def addSpacing():
 	file = open("test.txt",'a')
 	file.write("\n\n\n\n\n\n")
-	print ("\n\n\n\n\n\n")
 	file.close()
 
 

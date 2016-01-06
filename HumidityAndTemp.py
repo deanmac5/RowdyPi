@@ -6,7 +6,7 @@ import time, datetime
 
 def readDHT(room,sensor,pin):
     hum, temp = Adafruit_DHT.read_retry(sensor, pin)
-    printOutput(room, hum, temp, pin)
+    return printOutput(room, hum, temp, pin)
 
 
 def printOutput(room, hum,temp, pin):
@@ -26,5 +26,5 @@ def getHumAndTemp():
     valList = []
     for room,pin in pins.items():
         valList.append(readDHT(room, sensor, pin))
-
+	
     return valList

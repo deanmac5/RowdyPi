@@ -17,12 +17,13 @@ def get_filepaths(directory):
 
 
 def printReadings(full_file_paths):
+    allList = []
     i = 0
     for dir in full_file_paths:
 
         file = dir + "/w1_slave"
         f = open(file, 'r')
-
+	
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
 
@@ -33,9 +34,10 @@ def printReadings(full_file_paths):
 
         f.close()
         values = [st,dir,temp]
-        writeTemp(values)
-	print values
-    addSpacing()
+	allList.append(values)
+        #writeTemp(values)
+	#print values
+    return allList
 
 def getTemp(text):
     temp = "t="
@@ -63,7 +65,7 @@ def addSpacing():
 def getReadings():
 	full_file_paths = get_filepaths("/sys/bus/w1/devices")
 	full_file_paths.pop(0) #this gets rid of the non sensor directory
-	printReadings(full_file_paths)
+	return printReadings(full_file_paths)
 
 
 #
