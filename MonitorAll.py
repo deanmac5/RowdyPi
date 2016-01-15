@@ -148,7 +148,6 @@ while (True):
             id_wire_temp = key
     line = ""
     if not os.path.isfile(file_name) or (options == "w"):
-        options = "a"
         line += "Date"
         for res in allValues:
             line += "," + res[id_key]
@@ -187,4 +186,5 @@ while (True):
     file_results.write(s)
 
     file_results.close()
+    options = "a"
     time.sleep(float(sleep))
