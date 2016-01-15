@@ -33,13 +33,6 @@ while(True):
     bothVals = HumidityAndTemp.getHumAndTemp()
     justTempVals = TempOneWire.getReadings()
     allValues = bothVals + justTempVals
-    
-
-    #for res in allValues:
-    #    cleanResult =  ','.join(res)
-    #    print cleanResult
-    #    writeTemp(cleanResult)
-    testResult = allValues
 
     file_name = "results.csv"
     tempHumidityIndexes = {0: "Date", 1: "ID", 2: "Pin Number", 3: "Temperature", 4: "Humidity"}
@@ -73,7 +66,7 @@ while(True):
     line = ""
     if not os.path.isfile(file_name):
         line += "Date"
-        for res in testResult:
+        for res in allValues:
             line += ","+res[id_key]
             if len(res) == 5:
                 line += ","
@@ -90,8 +83,8 @@ while(True):
 
         line += "\n"
 
-    line += testResult[0][0]
-    for res in testResult:
+    line += allValues[0][0]
+    for res in allValues:
         data = ""
         if len(res) == 5:
             data += ","+res[3]+","+res[4]
@@ -110,8 +103,4 @@ while(True):
     file.write(s)
 
     file.close()
-        
-
-    # writeTemp(allValues)
-    # addSpacing()
-    # time.sleep(600)
+    time.sleep(600)
