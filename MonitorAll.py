@@ -26,11 +26,10 @@ def addSpacing():
     file.close()
 
 
-global sleep, file_name, options, first_run
+global sleep, file_name, options
 sleep = 600
 file_name = "results.csv"
 options = "a"
-first_run = True
 
 
 def incorrect_usage(argv, required_number):
@@ -148,8 +147,8 @@ while (True):
         if value == "Temperature_wire":
             id_wire_temp = key
     line = ""
-    if not os.path.isfile(file_name) or (first_run is True and options == "w"):
-        first_run = False
+    if not os.path.isfile(file_name) or (options == "w"):
+        options = "a"
         line += "Date"
         for res in allValues:
             line += "," + res[id_key]
