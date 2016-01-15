@@ -59,6 +59,10 @@ def check_args(argv):
             if len(temp_split) == 2 and temp_split[0] == "s":
                 sleep = temp_split[1]
                 met_sleep = True
+                try:
+                    float(sleep)
+                except ValueError:
+                    met_sleep = False
             elif len(temp_split) == 2 and temp_split[0] == "f":
                 file_name = temp_split[1]
                 met_file = True
