@@ -182,4 +182,4 @@ while (True):
     file_results.write(s)
 
     file_results.close()
-    time.sleep(sleep)
+    time.sleep(float(sleep))
