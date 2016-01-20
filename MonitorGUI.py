@@ -23,7 +23,7 @@ class MonitorGUI(QDialog):
 
         bathSensor = Sensor("Bathroom",9)
         bedroomSensor = Sensor("Bedroom",10)
-        garageSensor = Sensor("Bedroom",10)
+        garageSensor = Sensor("Garage",11)
 
         sensors = [bathSensor,bedroomSensor,garageSensor]
         count = 0
