@@ -7,14 +7,28 @@ class MonitorGUI(QDialog):
         QDialog.__init__(self)
 
         layout = QGridLayout()
-        self.label = QLabel()
+
         start = QPushButton("Start")
         pause = QPushButton("Pause")
         quit = QPushButton("Quit")
-        self.reading = QLCDNumber()
 
-        layout.addWidget(self.label,0,0)
-        layout.addWidget(self.reading,1,0)
+        self.label1 = QLabel("Bedroom")
+        self.label2 = QLabel("Bathroom")
+        self.label3 = QLabel("Garage")
+
+        self.reading1 = QLCDNumber()
+        self.reading2 = QLCDNumber()
+        self.reading3 = QLCDNumber()
+
+        layout.addWidget(self.label1,1,0)
+        layout.addWidget(self.reading1,0,0)
+
+        layout.addWidget(self.label2,1,1)
+        layout.addWidget(self.reading2,0,1)
+
+        layout.addWidget(self.label3,1,2)
+        layout.addWidget(self.reading3,0,2)
+
         layout.addWidget(start,2,0)
         layout.addWidget(pause,2,1)
         layout.addWidget(quit,2,2)
@@ -30,8 +44,10 @@ class MonitorGUI(QDialog):
 
     def display(self):
         # self.reading.setText = "xxx"
-        self.label.setText("hola")
-        self.reading.display(99.90)
+        # self.label.setText("hola")
+        self.reading1.display(99.90)
+        self.reading2.display(24.3)
+        self.reading3.display(17.2)
 
 
     def pause(self):
