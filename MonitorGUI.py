@@ -7,12 +7,13 @@ class MonitorGUI(QDialog):
         QDialog.__init__(self)
 
         layout = QGridLayout()
-        self.reading = QLabel("Reading text will go here")
+        self.label = QLabel()
         start = QPushButton("Start")
         pause = QPushButton("Pause")
         quit = QPushButton("Quit")
+        # self.label.setText = "hello"
 
-        layout.addWidget(self.reading,0,0)
+        layout.addWidget(self.label,0,0)
         layout.addWidget(start,2,0)
         layout.addWidget(pause,2,1)
         layout.addWidget(quit,2,2)
@@ -22,12 +23,17 @@ class MonitorGUI(QDialog):
         self.resize(600,400)
 
         quit.clicked.connect(self.close)
+        pause.clicked.connect(self.pause)
 
         start.clicked.connect(self.display)
 
     def display(self):
-        self.reading.setText = "Hello"
-        print("Console hello")
+        # self.reading.setText = "xxx"
+        self.label.setText("hola")
+
+
+    def pause(self):
+        pass
 
 app = QApplication(sys.argv)
 mon = MonitorGUI()
