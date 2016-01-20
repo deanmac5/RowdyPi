@@ -1,5 +1,6 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+from Sensor import Sensor
 import sys
 
 class MonitorGUI(QDialog):
@@ -12,29 +13,26 @@ class MonitorGUI(QDialog):
         pause = QPushButton("Pause")
         quit = QPushButton("Quit")
 
-        self.label1 = QLabel("Bedroom")
-        self.label2 = QLabel("Bathroom")
-        self.label3 = QLabel("Garage")
-
         self.reading1 = QLCDNumber()
         self.reading2 = QLCDNumber()
         self.reading3 = QLCDNumber()
-
-        layout.addWidget(self.label1,1,0)
-        layout.addWidget(self.reading1,0,0)
-
-        layout.addWidget(self.label2,1,1)
-        layout.addWidget(self.reading2,0,1)
-
-        # layout.addWidget(self.label3,1,2)
-        # layout.addWidget(self.reading3,0,2)
 
         layout.addWidget(start,2,0)
         layout.addWidget(pause,2,1)
         layout.addWidget(quit,2,2)
 
-        layout2 = self.create_sensor_view(3)
-        layout.addLayout(layout2,0,2)
+        bathSensor = Sensor("Bathroom",9)
+        bedroomSensor = Sensor("Bedroom",10)
+        garageSensor = Sensor("Bedroom",10)
+
+        sensors = [bathSensor,bedroomSensor,garageSensor]
+        count = 0
+        for i in sensors:
+
+            templayout = self.create_sensor_view(i)
+            layout.addLayout(templayout,0,count)
+            count += 1
+
 
         self.setLayout(layout)
         self.setWindowTitle("Rowdy Pi")
@@ -51,15 +49,17 @@ class MonitorGUI(QDialog):
         self.reading2.display(24.3)
         self.reading3.display(17.2)
 
-    def create_sensor_view(self,num):
-        self.label = QLabel("Temperature:")
+    def create_sensor_view(self,sensor):
+        self.locationLabel = QLabel(sensor.location + "     Pin: " + str(sensor.pin))
+        self.templabel = QLabel("Temp:")
         self.reading = QLCDNumber()
-        self.reading.display(num)
-        self.enableButton = QPushButton("Enable")
-        self.sensor_grid = QVBoxLayout()
-        self.sensor_grid.addWidget(self.label)
-        self.sensor_grid.addWidget(self.reading)
-        self.sensor_grid.addWidget(self.enableButton)
+        self.reading.display(55.3)
+
+        self.sensor_grid = QGridLayout()
+        self.sensor_grid.addWidget(self.locationLabel,0,0)
+        self.sensor_grid.addWidget(self.templabel,1,0)
+        self.sensor_grid.addWidget(self.reading,1,1)
+
         return self.sensor_grid
 
 
