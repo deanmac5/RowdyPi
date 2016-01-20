@@ -26,12 +26,15 @@ class MonitorGUI(QDialog):
         layout.addWidget(self.label2,1,1)
         layout.addWidget(self.reading2,0,1)
 
-        layout.addWidget(self.label3,1,2)
-        layout.addWidget(self.reading3,0,2)
+        # layout.addWidget(self.label3,1,2)
+        # layout.addWidget(self.reading3,0,2)
 
         layout.addWidget(start,2,0)
         layout.addWidget(pause,2,1)
         layout.addWidget(quit,2,2)
+
+        layout2 = self.create_sensor_view(3)
+        layout.addLayout(layout2,0,2)
 
         self.setLayout(layout)
         self.setWindowTitle("Rowdy Pi")
@@ -43,11 +46,22 @@ class MonitorGUI(QDialog):
         start.clicked.connect(self.display)
 
     def display(self):
-        # self.reading.setText = "xxx"
-        # self.label.setText("hola")
+
         self.reading1.display(99.90)
         self.reading2.display(24.3)
         self.reading3.display(17.2)
+
+    def create_sensor_view(self,num):
+        self.label = QLabel("Temperature:")
+        self.reading = QLCDNumber()
+        self.reading.display(num)
+        self.enableButton = QPushButton("Enable")
+        self.sensor_grid = QVBoxLayout()
+        self.sensor_grid.addWidget(self.label)
+        self.sensor_grid.addWidget(self.reading)
+        self.sensor_grid.addWidget(self.enableButton)
+        return self.sensor_grid
+
 
 
     def pause(self):
