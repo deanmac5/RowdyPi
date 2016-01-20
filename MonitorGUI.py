@@ -11,9 +11,10 @@ class MonitorGUI(QDialog):
         start = QPushButton("Start")
         pause = QPushButton("Pause")
         quit = QPushButton("Quit")
-        # self.label.setText = "hello"
+        self.reading = QLCDNumber()
 
         layout.addWidget(self.label,0,0)
+        layout.addWidget(self.reading,1,0)
         layout.addWidget(start,2,0)
         layout.addWidget(pause,2,1)
         layout.addWidget(quit,2,2)
@@ -30,6 +31,7 @@ class MonitorGUI(QDialog):
     def display(self):
         # self.reading.setText = "xxx"
         self.label.setText("hola")
+        self.reading.display(99.90)
 
 
     def pause(self):
