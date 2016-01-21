@@ -44,8 +44,10 @@ class MonitorGUI(QDialog):
         quit.clicked.connect(self.close)
         pause.clicked.connect(self.pause)
 
-        # start.clicked.connect(self.display)
+        start.clicked.connect(self.display)
 
+    def display(self):
+        pass
 
 
     def create_sensor_view(self,sensor):
