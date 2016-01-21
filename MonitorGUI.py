@@ -7,58 +7,59 @@ class MonitorGUI(QDialog):
     def __init__(self):
         QDialog.__init__(self)
 
-        layout = QGridLayout()
+        layout = QVBoxLayout()
 
+        buttonLayout = QHBoxLayout()
         start = QPushButton("Start")
         pause = QPushButton("Pause")
         quit = QPushButton("Quit")
 
-        self.reading1 = QLCDNumber()
-        self.reading2 = QLCDNumber()
-        self.reading3 = QLCDNumber()
-
-        layout.addWidget(start,2,0)
-        layout.addWidget(pause,2,1)
-        layout.addWidget(quit,2,2)
+        buttonLayout.addWidget(start)
+        buttonLayout.addWidget(pause)
+        buttonLayout.addWidget(quit)
 
         bathSensor = Sensor("Bathroom",9)
-        bedroomSensor = Sensor("Bedroom",10)
+        bedroomSensor = Sensor("Bedroom 1",10)
         garageSensor = Sensor("Garage",11)
+        kitchenSensor = Sensor("Kitchen",12)
+        loungeSensor = Sensor("Lounge",13)
+        bedroom2Sensor = Sensor("Bedroom 2",11)
+        sensors = [bathSensor,bedroomSensor,garageSensor, kitchenSensor,loungeSensor, bedroom2Sensor ]
 
-        sensors = [bathSensor,bedroomSensor,garageSensor]
-        count = 0
+
+
         for i in sensors:
 
             templayout = self.create_sensor_view(i)
-            layout.addLayout(templayout,0,count)
-            count += 1
+            layout.addLayout(templayout,sensors.index(i))
 
+
+        layout.addLayout(buttonLayout)
 
         self.setLayout(layout)
         self.setWindowTitle("Rowdy Pi")
         self.resize(600,400)
+        start.setFocus()
 
         quit.clicked.connect(self.close)
         pause.clicked.connect(self.pause)
 
-        start.clicked.connect(self.display)
+        # start.clicked.connect(self.display)
 
-    def display(self):
 
-        self.reading1.display(99.90)
-        self.reading2.display(24.3)
-        self.reading3.display(17.2)
 
     def create_sensor_view(self,sensor):
-        self.locationLabel = QLabel(sensor.location + "     Pin: " + str(sensor.pin))
-        self.templabel = QLabel("Temp:")
+        self.locationLabel = QLabel(sensor.location + "\nPin:" + str(sensor.pin))
+
         self.reading = QLCDNumber()
         self.reading.display(55.3)
+        heatButton = QPushButton("Turn On")
 
-        self.sensor_grid = QGridLayout()
-        self.sensor_grid.addWidget(self.locationLabel,0,0)
-        self.sensor_grid.addWidget(self.templabel,1,0)
-        self.sensor_grid.addWidget(self.reading,1,1)
+        self.sensor_grid = QHBoxLayout()
+        self.sensor_grid.addWidget(self.locationLabel)
+
+        self.sensor_grid.addWidget(self.reading)
+        self.sensor_grid.addWidget(heatButton)
 
         return self.sensor_grid
 
