@@ -4,3 +4,4 @@
 *.iml
 *.csv
 *.pyc
+.DS_Store
