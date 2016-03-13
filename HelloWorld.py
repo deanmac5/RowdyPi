@@ -28,6 +28,7 @@ class HelloWorld(QDialog):
         self.label.setText(text)
 
 
+
 app = QApplication(sys.argv)
 dialog = HelloWorld()
 dialog.show()
