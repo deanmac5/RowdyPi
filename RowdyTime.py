@@ -18,8 +18,8 @@ print "Enter the minutes"
 minutes = raw_input()
 
 
-
-date_str = year+'-'+month+'-'+day+'T'+hour+':'+minutes+':00.52-0500'
+#Changed time zone to +1000
+date_str = year+'-'+month+'-'+day+'T'+hour+':'+minutes+':00.52+1000'
 print date_str
 
 
